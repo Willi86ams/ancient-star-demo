@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#172626"><title>梨园初梦 · 可走动的青溪镇</title>
+  <link rel="stylesheet" href="scene.css">
+  <script src="game.js" defer></script><script src="scene.js" defer></script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true"><defs><symbol id="actor-art" viewBox="0 0 220 300"><path d="M84 250L81 278Q89 284 103 278L105 247" fill="#343f41" style="transform-origin:96px 249px;transform:rotate(var(--leg-swing,0deg))"/><path d="M115 247L117 278Q133 283 139 276L134 249" fill="#343f41" style="transform-origin:122px 249px;transform:rotate(calc(var(--leg-swing,0deg) * -1))"/>
+   <path d="M83 137Q59 144 45 178L30 211Q34 227 54 224L74 191L69 258Q109 277 151 258L146 190L166 225Q188 229 190 210L174 173Q164 143 138 137Z" fill="var(--robe)" stroke="#3b6057" stroke-width="2"/>
+   <path d="M88 139L110 166L134 139L127 159L109 179L96 160Z" fill="var(--trim)"/><path d="M109 178L103 260M76 204Q108 213 146 204" stroke="var(--trim)" stroke-width="7" fill="none"/>
+   <path d="M45 179L62 195M157 193L175 178" stroke="var(--trim)" stroke-width="8"/><path d="M33 211Q31 226 44 221M178 215Q185 226 189 214" stroke="#edbd99" stroke-width="8" stroke-linecap="round"/>
+   <path d="M97 125L97 143Q109 157 123 142L123 123" fill="#efbd98"/><ellipse cx="109" cy="96" rx="43" ry="47" fill="#f4cfac"/>
+   <path d="M67 96Q51 51 85 45Q80 26 101 27Q121 16 132 43Q165 53 153 104L143 86Q140 68 129 64Q109 82 79 76L75 99Z" fill="#293f40"/>
+   <path d="M82 48Q104 36 132 46" stroke="var(--trim)" stroke-width="6" fill="none"/><path d="M85 93L98 92M120 92L134 93" stroke="#54433b" stroke-width="2" stroke-linecap="round"/><path d="M87 101Q93 97 99 102M120 102Q126 97 132 101" fill="none" stroke="#303d3b" stroke-width="2" stroke-linecap="round"/><ellipse cx="82" cy="111" rx="9" ry="4" fill="#dc8a77" opacity=".5"/><ellipse cx="137" cy="111" rx="9" ry="4" fill="#dc8a77" opacity=".5"/><path d="M104 123Q110 127 117 122" fill="none" stroke="#b85c51" stroke-width="2" stroke-linecap="round"/>
+   <g id="opera-hair" style="display:none"><path d="M70 69Q45 37 63 30Q73 28 79 43M144 63Q172 34 159 27Q149 25 141 43" fill="none" stroke="#e6cb85" stroke-width="5"/><circle cx="64" cy="29" r="7" fill="#bd574f"/><circle cx="158" cy="27" r="7" fill="#bd574f"/><circle cx="110" cy="45" r="9" fill="#bd574f"/><path d="M70 78L57 119M148 77L162 119" stroke="#dfc894" stroke-width="3"/><circle cx="57" cy="121" r="5" fill="#bd574f"/><circle cx="162" cy="121" r="5" fill="#bd574f"/></g>
+   <path d="M91 231Q110 213 127 233Q110 254 91 231Z" fill="none" stroke="var(--trim)" opacity=".8"/></symbol><symbol id="npc-art" viewBox="0 0 100 150"><path d="M34 127L32 143H45L46 126M54 126L56 143H70L66 127" fill="#303e3b"/><path d="M33 65Q19 72 14 100L24 108L33 92L29 131Q50 139 72 130L67 93L78 108L88 100Q81 72 67 65Z" fill="var(--npc-robe,#8a694b)" stroke="#35483c" stroke-width="2"/><path d="M37 67L50 82L63 67M32 105H68" fill="none" stroke="#e7c7a1" stroke-width="5"/><path d="M40 58V69Q50 77 60 69V58" fill="#dfb087"/><ellipse cx="50" cy="44" rx="24" ry="28" fill="#e8bf95"/><path d="M26 45Q18 16 43 13Q62 7 72 26L75 46L65 35Q46 38 34 30Z" fill="#35413d"/><path d="M27 28Q50 16 73 30" stroke="#b6aa80" stroke-width="4" fill="none"/><path d="M36 46H43M57 46H64M44 60Q50 63 56 60" stroke="#655443" stroke-width="2" stroke-linecap="round"/></symbol></defs></svg>
+<main class="game-shell">
+  <header class="outside-header"><div><span class="title-seal">梨园</span><h1>在古代当明星的二百种死法</h1></div><span>第一折 · 青溪旧梦</span></header>
+  <section id="game" class="game-frame" aria-label="16比9可探索游戏场景" tabindex="0">
+    <img class="scene-background" src="assets/opera-courtyard.png" alt="落日下的戏班庭院，中央是古戏台，两侧是旧宅、练功亭、茶楼和布庄" draggable="false">
+    <div class="scene-shade" aria-hidden="true"></div>
+    <div class="hud-top">
+      <div class="chapter-seal"><span>春和班</span><strong id="day">第一日</strong><small>三日之约</small></div>
+      <section class="resources" aria-label="人物状态"><div><span>行动</span><b id="ap">4</b><small>/4</small></div><div><span>盘缠</span><b id="money">60</b><small>文</small></div><div><span>才艺</span><b id="talent">1</b></div><div><span>线索</span><b id="clues">0</b><small>/1</small></div></section>
+      <nav class="hud-menu" aria-label="游戏菜单"><button id="wardrobe-btn">衣箱</button><button id="quest-toggle" aria-expanded="true">任务</button><button id="archive-btn">命簿 <span id="archive-count">0</span></button><button id="settings-btn" aria-label="玩法和操作">?</button><button id="fullscreen-btn" aria-label="切换全屏">⛶</button></nav>
+    </div>
+    <aside class="quest-panel" id="quest-panel"><div class="quest-heading"><span>主线 · 三日之约</span><small>第三日结束前</small></div><h2>借一出戏，换一条生路。</h2><ul class="quest-list"><li id="q-money"><span class="check"></span>筹齐 120 文租金</li><li id="q-talent"><span class="check"></span>才艺达到 3 级</li><li id="q-outfit"><span class="check"></span>换上朱砂戏服</li><li id="q-clue"><span class="check"></span>寻访旧戏线索</li></ul><div class="quest-progress"><i id="quest-progress"></i></div><p>准备妥当后，去古戏台登台 · 2 行动</p></aside>
+    <nav class="world-hotspots" aria-label="庭院地点，点击可自动走近">
+      <button data-place="home" class="world-hotspot" style="--x:12%;--y:46%"><span class="spot-dot"></span>旧宅<small>歇息处</small></button>
+      <button data-place="troupe" class="world-hotspot" style="--x:32%;--y:51%"><span class="spot-dot"></span>春和戏班<small>练习身段</small></button>
+      <button data-place="stage" class="world-hotspot stage-hotspot" style="--x:51%;--y:43%"><span class="spot-dot"></span>古戏台<small>空台夜唱</small></button>
+      <button data-place="tea" class="world-hotspot" style="--x:76%;--y:50%"><span class="spot-dot"></span>听雨茶楼<small>帮工 · 打听</small></button>
+      <button data-place="shop" class="world-hotspot" style="--x:92%;--y:57%"><span class="spot-dot"></span>云裳布庄<small>选购戏服</small></button>
+    </nav>
+    <div class="npc" style="left:33%;top:64%;--npc-robe:#8a694b" aria-hidden="true"><span class="actor-shadow"></span><svg viewBox="0 0 100 150"><use href="#npc-art"/></svg><span class="npc-name">柳师傅</span></div>
+    <div class="npc" style="left:76.5%;top:68%;--npc-robe:#537779" aria-hidden="true"><span class="actor-shadow"></span><svg viewBox="0 0 100 150"><use href="#npc-art"/></svg><span class="npc-name">茶楼掌柜</span></div>
+    <div class="npc" style="left:92%;top:71%;--npc-robe:#936877" aria-hidden="true"><span class="actor-shadow"></span><svg viewBox="0 0 100 150"><use href="#npc-art"/></svg><span class="npc-name">云娘</span></div>
+    <div class="move-destination" id="destination" hidden aria-hidden="true"></div>
+    <div class="player" id="player" aria-label="沈知微，可以用WASD控制走动"><span class="actor-shadow"></span><div class="player-body"><svg viewBox="0 0 220 300" aria-hidden="true"><use href="#actor-art"/></svg></div><span class="player-name">沈知微<span>你</span></span></div>
+    <button id="interact-prompt" class="interact-prompt" hidden><kbd>E</kbd><span>交谈</span></button>
+    <div class="world-caption" id="world-caption"><span class="caption-rule"></span><span>青溪镇 · 春和戏班</span><small>自由走动不消耗行动</small></div>
+    <section class="dialogue-panel" id="dialogue-panel" aria-label="当前地点对话"><button class="dialogue-close" id="dialogue-close" aria-label="收起对话">×</button><div class="dialogue-face"><svg viewBox="0 0 220 300" aria-hidden="true"><use href="#actor-art"/></svg></div><div id="location"></div></section>
+    <aside class="wardrobe-panel" id="wardrobe-panel" hidden><div class="drawer-heading"><h2>随身衣箱</h2><button id="wardrobe-close" aria-label="关闭衣箱">×</button></div><svg class="wardrobe-portrait" viewBox="0 0 220 300" aria-hidden="true"><use href="#actor-art"/></svg><p id="outfit-caption">身着 · 苔色旧衫</p><div class="swatches"><button data-outfit="plain" class="swatch" style="--color:#789c91"><i></i>苔色旧衫</button><button data-outfit="blue" class="swatch" style="--color:#6989a2"><i></i>烟水青衣</button><button data-outfit="opera" class="swatch" style="--color:#b85550"><i></i><span id="opera-label">戏服 35文</span></button></div><p id="costume-note"></p></aside>
+    <div class="controls-bar"><div class="control-legend"><span class="keys"><kbd>W</kbd><span><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span></span><span>走动</span><kbd>E</kbd><span>交互</span><span class="click-legend">点击地点可自动走近</span></div><div class="quick-actions"><button id="daily-btn" disabled>领取功课赏钱</button><button id="rest-btn">歇息 · 下一日</button><button id="journal-btn" aria-label="查看梨园手记">手记</button></div></div>
+    <div class="touch-pad" aria-label="触屏方向控制"><button data-move="KeyW" aria-label="向上移动">↑</button><button data-move="KeyA" aria-label="向左移动">←</button><button data-move="KeyS" aria-label="向下移动">↓</button><button data-move="KeyD" aria-label="向右移动">→</button></div>
+    <div class="scene-corner" aria-hidden="true">青溪镇</div>
+  </section>
+  <footer class="outside-footer"><span id="save-status">本地自动存档</span><span>WASD / 方向键移动 · E 交互 · Esc 收起对话</span><span>16:9 场景试玩 <span class="rotate-tip">· 横屏体验更佳</span></span></footer>
+</main>
+<div class="utility-data" hidden><p id="daily-text"></p><ol id="log"></ol><button id="intro-btn">重看序幕</button><button id="reset-btn">重开</button></div>
+<dialog id="modal" aria-labelledby="modal-title"><div class="modal-inner" id="modal-content"></div></dialog><div class="toast" id="toast" role="status"></div>
+</body>
+</html>

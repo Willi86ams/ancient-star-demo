@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#172626"><title>梨园初梦 · 可走动的青溪镇</title>
+  <link rel="stylesheet" href="scene.css">
+  <script src="game.js" defer></script><script src="scene.js" defer></script>
+</head>
+<body>
+<!--ACTOR_LIBRARY-->
+<main class="game-shell">
+  <header class="outside-header"><div><span class="title-seal">梨园</span><h1>在古代当明星的二百种死法</h1></div><span>第一折 · 青溪旧梦</span></header>
+  <section id="game" class="game-frame" aria-label="16比9可探索游戏场景" tabindex="0">
+    <img class="scene-background" src="assets/opera-courtyard.png" alt="落日下的戏班庭院，中央是古戏台，两侧是旧宅、练功亭、茶楼和布庄" draggable="false">
+    <div class="scene-shade" aria-hidden="true"></div>
+    <div class="hud-top">
+      <div class="chapter-seal"><span>春和班</span><strong id="day">第一日</strong><small>三日之约</small></div>
+      <section class="resources" aria-label="人物状态"><div><span>行动</span><b id="ap">4</b><small>/4</small></div><div><span>盘缠</span><b id="money">60</b><small>文</small></div><div><span>才艺</span><b id="talent">1</b></div><div><span>线索</span><b id="clues">0</b><small>/1</small></div></section>
+      <nav class="hud-menu" aria-label="游戏菜单"><button id="wardrobe-btn">衣箱</button><button id="quest-toggle" aria-expanded="true">任务</button><button id="archive-btn">命簿 <span id="archive-count">0</span></button><button id="settings-btn" aria-label="玩法和操作">?</button><button id="fullscreen-btn" aria-label="切换全屏">⛶</button></nav>
+    </div>
+    <aside class="quest-panel" id="quest-panel"><div class="quest-heading"><span>主线 · 三日之约</span><small>第三日结束前</small></div><h2>借一出戏，换一条生路。</h2><ul class="quest-list"><li id="q-money"><span class="check"></span>筹齐 120 文租金</li><li id="q-talent"><span class="check"></span>才艺达到 3 级</li><li id="q-outfit"><span class="check"></span>换上朱砂戏服</li><li id="q-clue"><span class="check"></span>寻访旧戏线索</li></ul><div class="quest-progress"><i id="quest-progress"></i></div><p>准备妥当后，去古戏台登台 · 2 行动</p></aside>
+    <nav class="world-hotspots" aria-label="庭院地点，点击可自动走近">
+      <button data-place="home" class="world-hotspot" style="--x:12%;--y:46%"><span class="spot-dot"></span>旧宅<small>歇息处</small></button>
+      <button data-place="troupe" class="world-hotspot" style="--x:32%;--y:51%"><span class="spot-dot"></span>春和戏班<small>练习身段</small></button>
+      <button data-place="stage" class="world-hotspot stage-hotspot" style="--x:51%;--y:43%"><span class="spot-dot"></span>古戏台<small>空台夜唱</small></button>
+      <button data-place="tea" class="world-hotspot" style="--x:76%;--y:50%"><span class="spot-dot"></span>听雨茶楼<small>帮工 · 打听</small></button>
+      <button data-place="shop" class="world-hotspot" style="--x:92%;--y:57%"><span class="spot-dot"></span>云裳布庄<small>选购戏服</small></button>
+    </nav>
+    <div class="npc" style="left:33%;top:64%;--npc-robe:#8a694b" aria-hidden="true"><span class="actor-shadow"></span><svg viewBox="0 0 100 150"><use href="#npc-art"/></svg><span class="npc-name">柳师傅</span></div>
+    <div class="npc" style="left:76.5%;top:68%;--npc-robe:#537779" aria-hidden="true"><span class="actor-shadow"></span><svg viewBox="0 0 100 150"><use href="#npc-art"/></svg><span class="npc-name">茶楼掌柜</span></div>
+    <div class="npc" style="left:92%;top:71%;--npc-robe:#936877" aria-hidden="true"><span class="actor-shadow"></span><svg viewBox="0 0 100 150"><use href="#npc-art"/></svg><span class="npc-name">云娘</span></div>
+    <div class="move-destination" id="destination" hidden aria-hidden="true"></div>
+    <div class="player" id="player" aria-label="沈知微，可以用WASD控制走动"><span class="actor-shadow"></span><div class="player-body"><svg viewBox="0 0 220 300" aria-hidden="true"><use href="#actor-art"/></svg></div><span class="player-name">沈知微<span>你</span></span></div>
+    <button id="interact-prompt" class="interact-prompt" hidden><kbd>E</kbd><span>交谈</span></button>
+    <div class="world-caption" id="world-caption"><span class="caption-rule"></span><span>青溪镇 · 春和戏班</span><small>自由走动不消耗行动</small></div>
+    <section class="dialogue-panel" id="dialogue-panel" aria-label="当前地点对话"><button class="dialogue-close" id="dialogue-close" aria-label="收起对话">×</button><div class="dialogue-face"><svg viewBox="0 0 220 300" aria-hidden="true"><use href="#actor-art"/></svg></div><div id="location"></div></section>
+    <aside class="wardrobe-panel" id="wardrobe-panel" hidden><div class="drawer-heading"><h2>随身衣箱</h2><button id="wardrobe-close" aria-label="关闭衣箱">×</button></div><svg class="wardrobe-portrait" viewBox="0 0 220 300" aria-hidden="true"><use href="#actor-art"/></svg><p id="outfit-caption">身着 · 苔色旧衫</p><div class="swatches"><button data-outfit="plain" class="swatch" style="--color:#789c91"><i></i>苔色旧衫</button><button data-outfit="blue" class="swatch" style="--color:#6989a2"><i></i>烟水青衣</button><button data-outfit="opera" class="swatch" style="--color:#b85550"><i></i><span id="opera-label">戏服 35文</span></button></div><p id="costume-note"></p></aside>
+    <div class="controls-bar"><div class="control-legend"><span class="keys"><kbd>W</kbd><span><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span></span><span>走动</span><kbd>E</kbd><span>交互</span><span class="click-legend">点击地点可自动走近</span></div><div class="quick-actions"><button id="daily-btn" disabled>领取功课赏钱</button><button id="rest-btn">歇息 · 下一日</button><button id="journal-btn" aria-label="查看梨园手记">手记</button></div></div>
+    <div class="touch-pad" aria-label="触屏方向控制"><button data-move="KeyW" aria-label="向上移动">↑</button><button data-move="KeyA" aria-label="向左移动">←</button><button data-move="KeyS" aria-label="向下移动">↓</button><button data-move="KeyD" aria-label="向右移动">→</button></div>
+    <div class="scene-corner" aria-hidden="true">青溪镇</div>
+  </section>
+  <footer class="outside-footer"><span id="save-status">本地自动存档</span><span>WASD / 方向键移动 · E 交互 · Esc 收起对话</span><span>16:9 场景试玩 <span class="rotate-tip">· 横屏体验更佳</span></span></footer>
+</main>
+<div class="utility-data" hidden><p id="daily-text"></p><ol id="log"></ol><button id="intro-btn">重看序幕</button><button id="reset-btn">重开</button></div>
+<dialog id="modal" aria-labelledby="modal-title"><div class="modal-inner" id="modal-content"></div></dialog><div class="toast" id="toast" role="status"></div>
+</body>
+</html>

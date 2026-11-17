@@ -1,0 +1,11 @@
+Tool: built-in image_gen (not API/CLI).
+Use case: illustration-story.
+Asset type: final 16:9 illustrated background for a playable Chinese opera adventure game, landscape 1792x1024 or preferably exact 16:9 if supported.
+
+Create an original detailed hand-painted 2D side-view/three-quarter Chinese opera troupe courtyard at golden dusk, sophisticated indie RPG background with clean ink outlines, warm amber lantern light, muted celadon, red lacquer, dark teal roofs and textured wood.
+
+Composition for actual game movement: central traditional raised opera stage at upper-middle (x50%, floor at y56%), red embroidered curtains and a painted mountain backdrop, empty stage; LEFT wing at x13%, an old troupe residence with broad doorway and steps; left-middle x33% a small rehearsal pavilion with percussion instruments; RIGHT wing at x81%, a welcoming tea stall with wooden counter and stools; far right x92%, a costume shop with two hanging opera robes and a clothing chest.
+
+Tile roofs frame a sunset sky at the top, distant mountains and bamboo beyond the compound walls. The lower half, approximately y55% to y88%, is one broad continuous FLAT STONE COURTYARD with clear walkable ground connecting left to right. Keep this ground empty and unobstructed, no railings or water crossing it, soft perspective with horizontal paving lines.
+
+Reserve upper 14% and bottom 16% as visually calm areas for UI overlays, but do not draw any UI. Frame like an immersive 16:9 videogame screenshot background, not a map, not an isometric miniature. Rich but readable scenery, atmospheric and inviting, full bleed image. No people, no characters, no text, no letters, no logos, no watermarks, no UI, no buttons, no border.

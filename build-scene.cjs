@@ -1,0 +1,15 @@
+const fs = require('node:fs');
+const path = require('node:path');
+const root = __dirname;
+const original = fs.readFileSync(path.join(root, 'index-v1.html'), 'utf8');
+let actor = original.slice(original.indexOf('<svg class="portrait"'), original.indexOf('</svg>', original.indexOf('<svg class="portrait"')) + 6);
+actor = actor.slice(actor.indexOf('>') + 1, actor.lastIndexOf('</svg>'));
+actor = actor.replace('<ellipse cx="110" cy="277" rx="64" ry="12" fill="#7d9a7a" opacity=".16"/>', '');
+actor = actor.replace('<circle cx="110" cy="115" r="81" fill="#f5efd1" opacity=".65"/>', '');
+actor = actor.replace('<circle cx="110" cy="115" r="68" fill="none" stroke="#a8bba0" stroke-dasharray="2 7"/>', '');
+actor = actor.replace('<path d="M84 250L81 278Q89 284 103 278L105 247M115 247L117 278Q133 283 139 276L134 249" fill="#343f41"/>', '<path d="M84 250L81 278Q89 284 103 278L105 247" fill="#343f41" style="transform-origin:96px 249px;transform:rotate(var(--leg-swing,0deg))"/><path d="M115 247L117 278Q133 283 139 276L134 249" fill="#343f41" style="transform-origin:122px 249px;transform:rotate(calc(var(--leg-swing,0deg) * -1))"/>');
+actor = actor.replace(/^[ \t]+$/gm, '').trim();
+const library = `<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true"><defs><symbol id="actor-art" viewBox="0 0 220 300">${actor}</symbol><symbol id="npc-art" viewBox="0 0 100 150"><path d="M34 127L32 143H45L46 126M54 126L56 143H70L66 127" fill="#303e3b"/><path d="M33 65Q19 72 14 100L24 108L33 92L29 131Q50 139 72 130L67 93L78 108L88 100Q81 72 67 65Z" fill="var(--npc-robe,#8a694b)" stroke="#35483c" stroke-width="2"/><path d="M37 67L50 82L63 67M32 105H68" fill="none" stroke="#e7c7a1" stroke-width="5"/><path d="M40 58V69Q50 77 60 69V58" fill="#dfb087"/><ellipse cx="50" cy="44" rx="24" ry="28" fill="#e8bf95"/><path d="M26 45Q18 16 43 13Q62 7 72 26L75 46L65 35Q46 38 34 30Z" fill="#35413d"/><path d="M27 28Q50 16 73 30" stroke="#b6aa80" stroke-width="4" fill="none"/><path d="M36 46H43M57 46H64M44 60Q50 63 56 60" stroke="#655443" stroke-width="2" stroke-linecap="round"/></symbol></defs></svg>`;
+const shell = fs.readFileSync(path.join(root, 'scene-shell.html'), 'utf8').replace('<!--ACTOR_LIBRARY-->', library);
+fs.writeFileSync(path.join(root, 'index.html'), shell);
+console.log('Built 16:9 scene shell; original preserved in index-v1.html');
